@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "name": "Formal Playground",
     "slug": "formal-playground-native",
-    "sdkVersion": "32.0.0",
+    "sdkVersion": "33.0.0",
     "platforms": ["ios", "android"],
 
     "orientation": "portrait",
@@ -20,7 +20,8 @@
       "fallbackToCacheTimeout": 0
     },
     "packagerOpts": {
-      "config": "rn-cli.config.js"
+      "sourceExts": ["ts", "tsx", "js"],
+      "config": "metro.config.js"
     }
   }
 }
