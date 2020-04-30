@@ -1,23 +1,22 @@
-import { useCallback } from 'react'
-import useFormal, { FormalConfig } from '@kevinwolf/formal'
-
-import { FormalWebState, FormalWebTextFieldEvent } from './types'
+import useFormal, { FormalConfig } from "@kevinwolf/formal";
+import { useCallback } from "react";
+import { FormalWebState, FormalWebTextFieldEvent } from "./types";
 
 export default function useFormalWeb<Schema>(
   initialValues: Schema,
-  config: FormalConfig<Schema>
+  config: FormalConfig<Schema>,
 ): FormalWebState<Schema> {
-  const formal = useFormal(initialValues, config)
+  const formal = useFormal(initialValues, config);
 
   const getFormProps = useCallback(
     () => ({
       onSubmit: (e: any) => {
-        e.preventDefault()
-        formal.submit()
+        e.preventDefault();
+        formal.submit();
       },
     }),
-    [formal]
-  )
+    [formal],
+  );
 
   const getFieldProps = useCallback(
     (field: keyof Schema) => ({
@@ -25,30 +24,30 @@ export default function useFormalWeb<Schema>(
       name: field as string,
       id: field as string,
       onChange: (e: FormalWebTextFieldEvent) => {
-        formal.change(field, e.target.value)
+        formal.change(field, e.target.value);
       },
     }),
-    [formal]
-  )
+    [formal],
+  );
 
   const getResetButtonProps = useCallback(
     () => ({
       ...formal.getResetButtonProps(),
-      type: 'button',
+      type: "button",
       onClick: () => {
-        formal.reset()
+        formal.reset();
       },
     }),
-    [formal]
-  )
+    [formal],
+  );
 
   const getSubmitButtonProps = useCallback(
     () => ({
       ...formal.getSubmitButtonProps(),
-      type: 'submit',
+      type: "submit",
     }),
-    [formal]
-  )
+    [formal],
+  );
 
   return {
     ...formal,
@@ -56,5 +55,5 @@ export default function useFormalWeb<Schema>(
     getFieldProps,
     getResetButtonProps,
     getSubmitButtonProps,
-  }
+  };
 }

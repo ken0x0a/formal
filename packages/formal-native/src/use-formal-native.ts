@@ -1,47 +1,46 @@
-import { useCallback } from 'react'
-import useFormal, { FormalConfig } from '@kevinwolf/formal'
-
-import { FormalNativeState } from './types'
+import useFormal, { FormalConfig } from "@kevinwolf/formal";
+import { useCallback } from "react";
+import { FormalNativeState } from "./types";
 
 export default function useFormalNative<Schema>(
   initialValues: Schema,
-  config: FormalConfig<Schema>
+  config: FormalConfig<Schema>,
 ): FormalNativeState<Schema> {
-  const formal = useFormal(initialValues, config)
+  const formal = useFormal(initialValues, config);
 
   const getFormProps = useCallback(() => {
-    throw new Error('formal.getFormProps() is not supported on React Native')
-  }, [])
+    throw new Error("formal.getFormProps() is not supported on React Native");
+  }, []);
 
   const getFieldProps = useCallback(
     (field: keyof Schema) => ({
       ...formal.getFieldProps(field),
       onChangeText: (text: string) => {
-        formal.change(field, text)
+        formal.change(field, text);
       },
     }),
-    [formal]
-  )
+    [formal],
+  );
 
   const getResetButtonProps = useCallback(
     () => ({
       ...formal.getResetButtonProps(),
       onPress: () => {
-        formal.reset()
+        formal.reset();
       },
     }),
-    [formal]
-  )
+    [formal],
+  );
 
   const getSubmitButtonProps = useCallback(
     () => ({
       ...formal.getSubmitButtonProps(),
       onPress: () => {
-        formal.submit()
+        formal.submit();
       },
     }),
-    [formal]
-  )
+    [formal],
+  );
 
   return {
     ...formal,
@@ -49,5 +48,5 @@ export default function useFormalNative<Schema>(
     getFieldProps,
     getResetButtonProps,
     getSubmitButtonProps,
-  }
+  };
 }

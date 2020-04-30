@@ -1,120 +1,105 @@
-import { cleanup, renderHook } from 'react-hooks-testing-library'
-import useFormal from '@kevinwolf/formal'
-
-import useFormalWeb from '../src/use-formal-web'
+import useFormal from "@kevinwolf/formal";
+import { cleanup, renderHook } from "react-hooks-testing-library";
+import useFormalWeb from "../src/use-formal-web";
 
 const initialValues = {
-  firstName: 'Tony',
-  lastName: 'Start',
-  email: 'ironman@avengers.io',
-}
+  firstName: "Tony",
+  lastName: "Start",
+  email: "ironman@avengers.io",
+};
 
-afterEach(cleanup)
+afterEach(cleanup);
 
-describe('useFormalWeb()', () => {
-  it('should extend useFormal()', () => {
-    const formal = renderHook(() =>
-      useFormal(initialValues, { onSubmit: values => values })
-    )
+describe("useFormalWeb()", () => {
+  it("should extend useFormal()", () => {
+    const formal = renderHook(() => useFormal(initialValues, { onSubmit: (values) => values }));
 
-    const formalWeb = renderHook(() =>
-      useFormalWeb(initialValues, { onSubmit: values => values })
-    )
+    const formalWeb = renderHook(() => useFormalWeb(initialValues, { onSubmit: (values) => values }));
 
     // @TODO: there should be a better way to test
     // that useFormalWeb() returns a useFormal()
     expect(Object.keys(formalWeb.result.current)).toEqual(
-      expect.arrayContaining(Object.keys(formal.result.current))
-    )
-  })
+      expect.arrayContaining(Object.keys(formal.result.current)),
+    );
+  });
 
-  describe('.getFormProps()', () => {
-    describe('.onSubmit()', () => {
-      it('should call submit() method', () => {
-        const { result } = renderHook(() =>
-          useFormalWeb(initialValues, { onSubmit: values => values })
-        )
+  describe(".getFormProps()", () => {
+    describe(".onSubmit()", () => {
+      it("should call submit() method", () => {
+        const { result } = renderHook(() => useFormalWeb(initialValues, { onSubmit: (values) => values }));
 
-        expect(result.current.getFormProps().onSubmit).toBeTruthy()
-      })
-    })
-  })
+        expect(result.current.getFormProps().onSubmit).toBeTruthy();
+      });
+    });
+  });
 
-  describe('.getFieldProps()', () => {
-    describe('.name', () => {
-      it('should be the same as the field', () => {
+  describe(".getFieldProps()", () => {
+    describe(".name", () => {
+      it("should be the same as the field", () => {
         const { result } = renderHook(() =>
           useFormalWeb(initialValues, {
-            onSubmit: values => values,
-          })
-        )
+            onSubmit: (values) => values,
+          }),
+        );
 
-        expect(result.current.getFieldProps('firstName').name).toEqual(
-          'firstName'
-        )
-      })
-    })
+        expect(result.current.getFieldProps("firstName").name).toEqual("firstName");
+      });
+    });
 
-    describe('.id', () => {
-      it('should be the same as the field', () => {
+    describe(".id", () => {
+      it("should be the same as the field", () => {
         const { result } = renderHook(() =>
           useFormalWeb(initialValues, {
-            onSubmit: values => values,
-          })
-        )
+            onSubmit: (values) => values,
+          }),
+        );
 
-        expect(result.current.getFieldProps('firstName').id).toEqual(
-          'firstName'
-        )
-      })
-    })
+        expect(result.current.getFieldProps("firstName").id).toEqual("firstName");
+      });
+    });
 
-    describe('.onChange()', () => {
-      it('should call change() with the current field value', () => {
-        const { result } = renderHook(() =>
-          useFormalWeb(initialValues, { onSubmit: values => values })
-        )
+    describe(".onChange()", () => {
+      it("should call change() with the current field value", () => {
+        const { result } = renderHook(() => useFormalWeb(initialValues, { onSubmit: (values) => values }));
 
-        expect(result.current.getFieldProps('firstName').onChange).toBeTruthy()
-      })
-    })
-  })
+        expect(result.current.getFieldProps("firstName").onChange).toBeTruthy();
+      });
+    });
+  });
 
-  describe('.getResetButtonProps()', () => {
-    describe('.type', () => {
-      it('should be button', () => {
+  describe(".getResetButtonProps()", () => {
+    describe(".type", () => {
+      it("should be button", () => {
         const { result } = renderHook(() =>
           useFormalWeb(initialValues, {
-            onSubmit: values => values,
-          })
-        )
+            onSubmit: (values) => values,
+          }),
+        );
 
-        expect(result.current.getResetButtonProps().type).toEqual('button')
-      })
-    })
+        expect(result.current.getResetButtonProps().type).toEqual("button");
+      });
+    });
 
-    describe('.onClick()', () => {
-      it('should call reset()', () => {
-        const { result } = renderHook(() =>
-          useFormalWeb(initialValues, { onSubmit: values => values })
-        )
+    describe(".onClick()", () => {
+      it("should call reset()", () => {
+        const { result } = renderHook(() => useFormalWeb(initialValues, { onSubmit: (values) => values }));
 
-        expect(result.current.getResetButtonProps().onClick).toBeTruthy()
-      })
-    })
-  })
+        expect(result.current.getResetButtonProps().onClick).toBeTruthy();
+      });
+    });
+  });
 
-  describe('.getSubmitButtonProps()', () => {
-    describe('.type', () => {
-      it('should be submit', () => {
+  describe(".getSubmitButtonProps()", () => {
+    describe(".type", () => {
+      it("should be submit", () => {
         const { result } = renderHook(() =>
           useFormalWeb(initialValues, {
-            onSubmit: values => values,
-          })
-        )
+            onSubmit: (values) => values,
+          }),
+        );
 
-        expect(result.current.getSubmitButtonProps().type).toEqual('submit')
-      })
-    })
-  })
-})
+        expect(result.current.getSubmitButtonProps().type).toEqual("submit");
+      });
+    });
+  });
+});
