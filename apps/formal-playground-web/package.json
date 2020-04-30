@@ -1,7 +1,7 @@
 {
   "private": true,
   "version": "0.1.3",
-  "name": "@kevinwolf/formal-playground-web",
+  "name": "@ken0x0a/formal-playground-web",
   "scripts": {
     "start": "start-storybook -c src -p 3000",
     "build": "echo \"Run yarn build-storybook to build storybook for production\"",
@@ -10,7 +10,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
-    "@kevinwolf/formal-web": "^0.1.3",
+    "@ken0x0a/formal-web": "^0.1.3",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-centered": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
