@@ -5,3 +5,10 @@ packages/**/lib
 storybook-static
 *.log
 .env
+
+yarn-debug.log*
+yarn-error.log*
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*
