@@ -4,8 +4,8 @@
   "name": "@kevinwolf/expo-yarn-workspaces",
   "main": "index.js",
   "dependencies": {
-    "debug": "^4.1.0",
-    "find-yarn-workspace-root": "^1.2.0",
-    "mkdirp": "^0.5.1"
+    "debug": "^4.1.1",
+    "find-yarn-workspace-root": "^1.2.1",
+    "mkdirp": "^1.0.4"
   }
 }

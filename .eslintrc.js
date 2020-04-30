@@ -1,12 +1,11 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react', 'react-hooks'],
+  parser: "@typescript-eslint/parser",
   extends: [
-    'plugin:@typescript-eslint/recommended',
-    'airbnb',
-    'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/react',
+    "@ken0x0a/eslint-config/base",
+    "@ken0x0a/eslint-config/tslint-rules",
+    "@ken0x0a/eslint-config/import",
+    "@ken0x0a/eslint-config/jest",
+    "@ken0x0a/eslint-config/typescript",
   ],
   env: {
     browser: true,
@@ -14,32 +13,15 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  settings: {
-    'import/resolver': {
-      typescript: {},
-    },
-  },
   rules: {
-    // Base.
-    'comma-dangle': ['error', 'always-multiline'],
-    'no-console': 'warn',
-    'no-unused-vars': 'off',
-    'no-use-before-define': 'off',
-    quotes: ['error', 'single'],
-    semi: ['error', 'never'],
-    'spaced-comment': 'off',
-
-    // Import.
-    'import/prefer-default-export': 'off',
-
     // TypeScript.
-    '@typescript-eslint/no-unused-vars': 'error',
-    '@typescript-eslint/no-use-before-define': 'off',
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-use-before-define": "off",
 
     // React/JSX
-    'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
-    'react/prop-types': 'off',
-    'react-hooks/exhaustive-deps': 'error',
-    'react-hooks/rules-of-hooks': 'error',
+    "react/jsx-filename-extension": ["error", { extensions: [".tsx"] }],
+    "react/prop-types": "off",
+    "react-hooks/exhaustive-deps": "error",
+    "react-hooks/rules-of-hooks": "error",
   },
-}
+};
