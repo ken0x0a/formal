@@ -33,9 +33,6 @@
   },
   "devDependencies": {
     "@types/yup": "^0.28.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-hooks-testing-library": "^0.6.0",
     "yup": "^0.28.4"
   }
 }
